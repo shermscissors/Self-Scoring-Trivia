@@ -21,6 +21,12 @@ h3 {
     font-family: 'Mukta', sans-serif;
     font-weight: 200;
 }
+h4 {
+    size: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 300;
+    color:rgb(7, 127, 167)
+}
 p {
     font-family: 'Arimo', sans-serif;
     font-size: 22px;
