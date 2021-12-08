@@ -14,6 +14,9 @@
     justify-content: flex-end;
     margin: 0 10;
 }
+#score{
+    transition: 1s;
+}
 button{
     color: white;
     flex-grow: 4;

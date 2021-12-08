@@ -23,6 +23,7 @@ const questionNumber = document.querySelector('#question-number');
 const questionAsk = document.querySelector('#question-ask');
 const timeField = document.querySelector('#time-field');
 const scoreField = document.querySelector('#score')
+const selectAnswer = document.querySelector('#answers')
 const buttonA = document.querySelector('#a');
 const buttonB = document.querySelector('#b');
 
@@ -31,7 +32,7 @@ let questionNum = questions.question1.number;
 let questionWords = questions.question1.question;
 let answerA = questions.question1.answers[0];
 let answerB = questions.question1.answers[1];
-let questionsRight = 1;
+let questionsRight = 0;
 
 // Functions
 
@@ -54,17 +55,27 @@ function showAnswers(answerA,answerB) {
     buttonA.innerText = answerA;
     buttonB.innerText = answerB;
 };
+function compareAnswers(event) {
+    let input = this.id
 
-function showScore() {
-    let score = questionsRight * 100;
-    scoreField.innerHTML = `<h4>Score: ${score} points</h4>`;
+
+    if (input === answers[0]) {
+        questionsRight += 1;
+    } else if (questionsRight > 0) {
+        questionsRight -= 1;
+        }
+    function showScore() {
+        let score = questionsRight * 100;
+        scoreField.innerHTML = `<h4>Score: ${score} points</h4>`;
+         }
+    showScore();
 }
 
 showQuestionNumber();
 showQuestionAsk();
 showAnswers(answerA, answerB);
-showScore();
 // showTimeLeft();
 
 // Event Listeners
-buttonA.addEventListener('click', )
+buttonA.addEventListener('click', compareAnswers);
+buttonB.addEventListener('click', compareAnswers);

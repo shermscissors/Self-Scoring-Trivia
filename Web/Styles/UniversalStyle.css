@@ -3,10 +3,11 @@
 }
 main {
     padding: 10%;
+    transition: 1s;
+
 }
 div {
-    display: flex;
-}
+    display: flex;}
 h1{
     font-family: 'Fjalla One', sans-serif;
     font-size: 60px;
