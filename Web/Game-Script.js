@@ -12,11 +12,16 @@ const questions = {
             number: 2,
             question: "What is shutter speed",
             answers: ["How long a photo is exposed", "The background blur"]
+        },
+        question3: {
+            number: 3,
+            question: "Ricoh is a brand under",
+            answers: ["Pentax","Panasonic"]
         }
 }
 
 // Answers Array
-const answers = ['a','b'];
+const answers = ['a','b','a','a','a','b'];
 
 // Consts
 const questionNumber = document.querySelector('#question-number');
@@ -38,31 +43,31 @@ let questionsRight = 0;
 
 function showQuestionNumber() {
     let number = questionNum;
-    questionNumber.innerHTML = `<h2 style="font-size: 60px">Question Number: ${number}</h2>`
+    questionNumber.innerHTML = `<h2>Question number: ${number}</h2>`
     
 }
 function showQuestionAsk() {
-	questionAsk.innerHTML = `<p style="background-color: white">${questionWords}?</p>`;
+	questionAsk.innerHTML = `<p>${questionWords}?<p>`;
 }
-function showTimeLeft() {
-   let time = setInterval(() => {
+function showTimeLeft(seconds) {
+    setInterval(function() {
         let seconds = 15;
         seconds--;
-    }, 1000)
-    timeField.innerHTML = `<h4 style="color: red">Time Left: ${time}</h4>`
+        }, 1000)
+    timeField.innerHTML = `<h4 style="color: red">Time Left: ${showTimeLeft()}</h4>`
 }
-function showAnswers(answerA,answerB) {
+function showAnswers(answerA, answerB) {
     buttonA.innerText = answerA;
     buttonB.innerText = answerB;
 };
 function compareAnswers(event) {
-    let input = this.id
-
-
+    let input = this.id 
     if (input === answers[0]) {
         questionsRight += 1;
+        nextQuestion();
     } else if (questionsRight > 0) {
         questionsRight -= 1;
+        nextQuestion();
         }
     function showScore() {
         let score = questionsRight * 100;
@@ -70,10 +75,30 @@ function compareAnswers(event) {
          }
     showScore();
 }
+function nextQuestion() {
+    for (let iterate in questions) {
+    questionNum = questions[iterate].number;
+    questionNumber.innerHTML = `<h2>Question number: ${questionNum}</h2>`;
 
+    questionWords = questions[iterate].question;
+    questionAsk.innerHTML = `<p>${questionWords}?<p>`;
+
+    answerA = questions[iterate].answers[0];
+    buttonA.innerText = answerA
+
+    answerB = questions[iterate].answers[1];
+    buttonB.innerText = answerB
+
+    }
+    for (let i = 0; i < answers.length; i++) {
+			answers[i];
+		}
+}
+// // Calling Functions
 showQuestionNumber();
 showQuestionAsk();
 showAnswers(answerA, answerB);
+
 // showTimeLeft();
 
 // Event Listeners
