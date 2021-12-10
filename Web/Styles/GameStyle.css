@@ -1,0 +1,53 @@
+#question-ask {
+    justify-content: center;
+    background-color: white;
+    border: 3px solid black;
+}
+#color {
+    background-color: green;
+}
+#answers {
+    color: white;
+    background-color: rgb(243, 243, 243);
+    flex-grow: 20%;
+    flex-basis: 100%;
+    justify-content: space-evenly;
+}
+#time-field {
+    justify-content: flex-end;
+    margin: 0 10;
+}
+#score{
+    margin: 0;
+    transition: 1s;
+}
+button{
+    color: white;
+    flex-grow: 4;
+    margin: 2% 3%;
+}
+h2 {
+    margin: 3px;
+}
+h3{
+    background-color: white;
+}
+h4 {
+    font-size: 22px;
+}
+p {
+    background-color: white;
+    font-size: 44px;
+}
+#a {
+    background-color: rgb(127, 211, 0);
+}
+#a:hover {
+    background-color: rgb(104, 172, 2);
+}
+#b {
+    background-color: indianred;
+}
+#b:hover {
+    background-color: rgb(168, 75, 75);
+}

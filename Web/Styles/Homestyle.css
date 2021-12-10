@@ -1,0 +1,28 @@
+body{
+    transition: 3s;
+
+}
+main {
+    padding: 5%;   
+}
+#start {
+    background-color: lightcoral;
+    color: white;
+    border: 0;
+}
+#start:hover {
+    background-color: rgb(231, 102, 102);
+}
+#start-div, #instructions {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#credit {
+    flex-direction: column;
+    flex-basis: 50%;
+    margin: 0 40px;
+    justify-content: flex-end;
+    align-items: flex-end;
+    height: 250px;
+}
