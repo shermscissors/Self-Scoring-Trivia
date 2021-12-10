@@ -17,6 +17,11 @@ const questions = {
             number: 3,
             question: "Ricoh is a brand under",
             answers: ["Pentax","Panasonic"]
+        },
+        question4: {
+            number: 4,
+            question: "TBA",
+            answers: ["TBA","UNDEFINED"]
         }
 }
 
@@ -38,6 +43,7 @@ let questionWords = questions.question1.question;
 let answerA = questions.question1.answers[0];
 let answerB = questions.question1.answers[1];
 let questionsRight = 0;
+let currentQuestion = 1;
 
 // Functions
 
@@ -64,40 +70,40 @@ function compareAnswers(event) {
     let input = this.id 
     if (input === answers[0]) {
         questionsRight += 1;
-        nextQuestion();
     } else if (questionsRight > 0) {
         questionsRight -= 1;
-        nextQuestion();
         }
     function showScore() {
         let score = questionsRight * 100;
         scoreField.innerHTML = `<h4>Score: ${score} points</h4>`;
          }
     showScore();
+    nextQuestion();
+
 }
-function nextQuestion() {
-    for (let iterate in questions) {
-    questionNum = questions[iterate].number;
-    questionNumber.innerHTML = `<h2>Question number: ${questionNum}</h2>`;
+function nextQuestion(event) {
+    currentQuestion++;
+    let questions2;
+    questions2 = questions[`question${currentQuestion}`]
 
-    questionWords = questions[iterate].question;
-    questionAsk.innerHTML = `<p>${questionWords}?<p>`;
-
-    answerA = questions[iterate].answers[0];
-    buttonA.innerText = answerA
-
-    answerB = questions[iterate].answers[1];
-    buttonB.innerText = answerB
-
-    }
     for (let i = 0; i < answers.length; i++) {
 			answers[i];
 		}
+    questionNumber.innerHTML = `<h2>Question number: ${questionNum}</h2>`;
+	questionAsk.innerHTML = `<p>${questionWords}?<p>`;
+	buttonA.innerText = answerA;
+	buttonB.innerText = answerB;
 }
 // // Calling Functions
 showQuestionNumber();
 showQuestionAsk();
 showAnswers(answerA, answerB);
+// for (let iterate in questions) {
+    // questionNum = questions[iterate].number;
+    // questionWords = questions[iterate].question;
+    // answerA = questions[iterate].answers[0];
+    // answerB = questions[iterate].answers[1];
+    // }
 
 // showTimeLeft();
 
