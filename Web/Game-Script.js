@@ -20,13 +20,93 @@ const questions = {
         },
         question4: {
             number: 4,
-            question: "TBA",
-            answers: ["TBA","UNDEFINED"]
-        }
+            question: "Micro 4/3 sensor is smaller than Full Frame",
+            answers: ["True","False"]
+        },
+        question5: {
+            number: 5,
+            question: "Fujifilm is based in",
+            answers: ["Germany","Japan"]
+        },
+        question6: {
+            number: 6,
+            question: "Street Photography is only limited to cities",
+            answers: ["True","False"]
+        },
+        question7: {
+            number: 7,
+            question: "Leica's black and white only cameras are called",
+            answers: ["Unsaturated","Monochrom"]
+        },
+        question8: {
+            number: 8,
+            question: "120 film denotes the",
+            answers: ["Film Type","Film Dimension"]
+        },
+        question9: {
+            number: 9,
+            question: "ISO Determines the",
+            answers: ["Bokeh","Sensitivity"]
+        },
+        question10: {
+            number: 10,
+            question: "IBIS stands for",
+            answers: ["Internal Built Iris Sensor","In Body Image Stabilization"]
+        },
+        question11: {
+            number: 11,
+            question: "The brightness of a color is called",
+            answers: ["Luminosity","Saturation"]
+        },
+        question12: {
+            number: 12,
+            question: "The background blur of an image is called",
+            answers: ["Bokeh","Fade"]
+        },
+        question13: {
+            number: 13,
+            question: "Point and Shoots have interchangable lenses",
+            answers: ["True","False"]
+        },
+        question14: {
+            number: 14,
+            question: "35mm Film is equivalent in size to",
+            answers: ["APS-C","Full Frame"]
+        },
+        question15: {
+            number: 15,
+            question: "Who makes the 'Pen' series of cameras",
+            answers: ["Olympus","Panasonic"]
+        },
+        question16: {
+            number: 16,
+            question: "The majority of image sensors are made by",
+            answers: ["Sony","Hasselblad"]
+        },
+        question17: {
+            number: 17,
+            question: "Fujifilm's flagship sensor is called",
+            answers: ["X-Trans","Fujivision"]
+        },
+        question18: {
+            number: 18,
+            question: "Weather sealed cameras are waterproof",
+            answers: ["True","False"]
+        },
+        question19: {
+            number: 19,
+            question: "Nikon's first full frame digital camera was the",
+            answers: ["D1","D3"]
+        },
+        question20: {
+            number: 20,
+            question: "The best camera to have is the",
+            answers: ["One you have","The most epensive one"]
+        },
 }
 
 // Answers Array
-const answers = ['a','b','a','a','a','b'];
+const answers = ['a','a','a','a','b','b','b','a','b','b','a','b','b','a','a','a','b','b','a'];
 
 // Consts
 const questionNumber = document.querySelector('#question-number');
@@ -83,28 +163,21 @@ function compareAnswers(event) {
 }
 function nextQuestion(event) {
     currentQuestion++;
-    let questions2;
-    questions2 = questions[`question${currentQuestion}`]
+    let _nextQuestion;
+    _nextQuestion = questions[`question${currentQuestion}`]
 
     for (let i = 0; i < answers.length; i++) {
 			answers[i];
 		}
-    questionNumber.innerHTML = `<h2>Question number: ${questionNum}</h2>`;
-	questionAsk.innerHTML = `<p>${questionWords}?<p>`;
-	buttonA.innerText = answerA;
-	buttonB.innerText = answerB;
+    questionNumber.innerHTML = `<h2>Question number: ${_nextQuestion.number}</h2>`;
+	questionAsk.innerHTML = `<p>${_nextQuestion.question}?<p>`;
+	buttonA.innerText = _nextQuestion.answers[0];
+	buttonB.innerText = _nextQuestion.answers[1];
 }
 // // Calling Functions
 showQuestionNumber();
 showQuestionAsk();
 showAnswers(answerA, answerB);
-// for (let iterate in questions) {
-    // questionNum = questions[iterate].number;
-    // questionWords = questions[iterate].question;
-    // answerA = questions[iterate].answers[0];
-    // answerB = questions[iterate].answers[1];
-    // }
-
 // showTimeLeft();
 
 // Event Listeners
