@@ -135,12 +135,13 @@ function showQuestionNumber() {
 function showQuestionAsk() {
 	questionAsk.innerHTML = `<p>${questionWords}?<p>`;
 }
-function showTimeLeft(seconds) {
-    setInterval(function() {
-        let seconds = 15;
+let startTime;
+function showTimeLeft() {
+    let seconds = 16;
+    startTime = setInterval(function() {
         seconds--;
+        timeField.innerHTML = `<h4 style="color: red">Time Left: ${seconds}</h4>`
         }, 1000)
-    timeField.innerHTML = `<h4 style="color: red">Time Left: ${showTimeLeft()}</h4>`
 }
 function showAnswers(answerA, answerB) {
     buttonA.innerText = answerA;
@@ -148,7 +149,8 @@ function showAnswers(answerA, answerB) {
 };
 function compareAnswers(event) {
     let input = this.id 
-    if (input === answers[0]) {
+
+    if (input === answers[currentQuestion - 1]) {
         questionsRight += 1;
     } else if (questionsRight > 0) {
         questionsRight -= 1;
@@ -156,12 +158,14 @@ function compareAnswers(event) {
     function showScore() {
         let score = questionsRight * 100;
         scoreField.innerHTML = `<h4>Score: ${score} points</h4>`;
-         }
+    }
     showScore();
     nextQuestion();
 
 }
 function nextQuestion(event) {
+    clearInterval(startTime);
+    showTimeLeft();
     currentQuestion++;
     let _nextQuestion;
     _nextQuestion = questions[`question${currentQuestion}`]
@@ -178,7 +182,7 @@ function nextQuestion(event) {
 showQuestionNumber();
 showQuestionAsk();
 showAnswers(answerA, answerB);
-// showTimeLeft();
+showTimeLeft();
 
 // Event Listeners
 buttonA.addEventListener('click', compareAnswers);
