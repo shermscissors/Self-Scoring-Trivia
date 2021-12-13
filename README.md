@@ -1,4 +1,4 @@
-![game screenshot](assets/Screen Shot 2021-12-12 at 8.06.24 PM.png)
+![game screenshot](assets/screenshot1.png)
 # Self Scoring Trivia: Photography Edition
 
 ## Technologies Used
