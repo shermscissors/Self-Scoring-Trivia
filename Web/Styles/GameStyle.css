@@ -9,13 +9,12 @@
 #answers {
     color: white;
     background-color: rgb(243, 243, 243);
-    flex-grow: 20%;
     flex-basis: 100%;
     justify-content: space-evenly;
 }
 #time-field {
     justify-content: flex-end;
-    margin: 0 10;
+    margin: 0 10px;
 }
 #score{
     margin: 0;
