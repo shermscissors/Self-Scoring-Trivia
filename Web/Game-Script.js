@@ -1,5 +1,5 @@
 // Hello!
-console.log(`Welcome to my game! If you're reading this, you're either A) In my SEI class and know how to access the console or B) Knowledgable about code prior. I want to put a secret message here, and will implement it after the game is done. If you see something special in this field "      " , that means I completed my project on time for once and had time to go back and add something special there. Go me. Go us!`)
+console.log(`Welcome to my game! If you're reading this, you're either A) In my SEI class and know how to access the console or B) Knowledgable about code prior. I want to put a secret message here, and will implement it after the game is done. If you see something special in this field "something special!" , that means I completed my project on time for once and had time to go back and add something special there. Go me. Go us!`)
 
 // Questions Object
 const questions = {
@@ -106,14 +106,17 @@ const questions = {
 }
 
 // Answers Array
-const answers = ['a','a','a','a','b','b','b','a','b','b','a','b','b','a','a','a','b','b','a'];
+const answers = ['a','a','a','a','b','b','b','a','b','b','a','a','b','b','a','a','a','b','b','a'];
 
-// Consts
+// Constants
+const game = document.querySelector('#game')
 const questionNumber = document.querySelector('#question-number');
 const questionAsk = document.querySelector('#question-ask');
 const timeField = document.querySelector('#time-field');
-const scoreField = document.querySelector('#score')
-const selectAnswer = document.querySelector('#answers')
+const scoreField = document.querySelector('#score');
+const selectAnswer = document.querySelector('#answers');
+const finalScore = document.querySelector('#final-score');
+const winScreen = document.querySelector('#win-screen');
 const buttonA = document.querySelector('#a');
 const buttonB = document.querySelector('#b');
 
@@ -124,6 +127,8 @@ let answerA = questions.question1.answers[0];
 let answerB = questions.question1.answers[1];
 let questionsRight = 0;
 let currentQuestion = 1;
+let startTime;
+let score;
 
 // Functions
 
@@ -135,37 +140,27 @@ function showQuestionNumber() {
 function showQuestionAsk() {
 	questionAsk.innerHTML = `<p>${questionWords}?<p>`;
 }
-let startTime;
-function showTimeLeft() {
-    let seconds = 16;
-    startTime = setInterval(function() {
-        seconds--;
-        timeField.innerHTML = `<h4 style="color: red">Time Left: ${seconds}</h4>`
-        }, 1000)
-}
+
 function showAnswers(answerA, answerB) {
     buttonA.innerText = answerA;
     buttonB.innerText = answerB;
 };
 function compareAnswers(event) {
     let input = this.id 
-
     if (input === answers[currentQuestion - 1]) {
         questionsRight += 1;
     } else if (questionsRight > 0) {
         questionsRight -= 1;
         }
     function showScore() {
-        let score = questionsRight * 100;
+        score = questionsRight * 100;
         scoreField.innerHTML = `<h4>Score: ${score} points</h4>`;
     }
     showScore();
     nextQuestion();
-
 }
 function nextQuestion(event) {
-    clearInterval(startTime);
-    showTimeLeft();
+    // clearInterval(startTime);
     currentQuestion++;
     let _nextQuestion;
     _nextQuestion = questions[`question${currentQuestion}`]
@@ -178,12 +173,44 @@ function nextQuestion(event) {
 	buttonA.innerText = _nextQuestion.answers[0];
 	buttonB.innerText = _nextQuestion.answers[1];
 }
+
 // // Calling Functions
 showQuestionNumber();
 showQuestionAsk();
 showAnswers(answerA, answerB);
-showTimeLeft();
 
 // Event Listeners
 buttonA.addEventListener('click', compareAnswers);
 buttonB.addEventListener('click', compareAnswers);
+
+                // COMING IN FUTURE UPDATES //
+        
+/* 
+    --Make it so you can't answer after last question 
+    --Make game time based
+    --Set answer to advance after timer reaches 0
+    --Make score based on time left
+    --Add win screen
+    --Add reset button
+*/
+function showTimeLeft() {
+                   let seconds = 16;
+                   if (seconds === 16) {
+                       startTime = setInterval(function () {
+                           seconds--;
+                           timeField.innerHTML = `<h4 style="color: red">Time Left: ${seconds}</h4>`;
+                       }, 1000);
+                   }
+}
+function showFinalScore() {
+                   finalScore.innerText = `Your final score was: ${score}`;
+}
+function gameOver() {
+                   if (questionNum === 2) {
+                       game.style.display = 'none';
+                   }
+}     
+// showTimeLeft(); WORK IN PROGRESS
+// showFinalScore(); WORK IN PROGRESS
+// gameOver(); WORK IN PROGRESS
+       
